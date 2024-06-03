@@ -1,23 +1,29 @@
-import org.apache.commons.io.FileUtils;
-
-import java.io.File;
-import java.util.Collection;
+import java.util.Arrays;
+import java.util.Random;
 
 public class Loader {
     public static void main(String[] args) {
-        File root = new File("E:\\IdeaProjects\\sandbox_2");
-        Collection<File> files = FileUtils.listFiles(root, null, true);
-        int count = 0;
-        for (File file : files) {
-            if (file.getName().endsWith(".java"))
-                System.out.println(file.getAbsolutePath());
-                count++;
+        int[][] matrix = new int[8][];
+        Random gen = new Random();
+
+        for (int i = 0; i < matrix.length; i++) {
+            matrix[i] = new int[i + 1];
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][j] = gen.nextInt(2);
+            }
         }
 
-        System.out.printf("Count of java files: %d%n", count);
-
-        if (count != 2) {
-            System.err.println("Try again");
+        for (int i = 0; i < matrix.length; i++) {
+            int[] row = matrix[i];
+            String line = Arrays.toString(row);
+            System.out.println(line);
         }
+
+        System.out.println(computeSum(matrix));
+    }
+
+    // TODO: compute the sum
+    public static int computeSum(int[][] matrix) {
+        return 0;
     }
 }
