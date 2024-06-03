@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Loader {
     public static void main(String[] args) {
-        int[][] matrix = new int[8][];
+        int[][] matrix = new int[1][8];
         Random gen = new Random();
 
         for (int i = 0; i < matrix.length; i++) {
@@ -24,6 +24,11 @@ public class Loader {
 
     // TODO: compute the sum
     public static int computeSum(int[][] matrix) {
-        return 0;
+        int compute = 0;
+        for (int i= 0; i < matrix.length; i++) {
+            for (int j = 0; j<matrix[i].length; j++)
+                compute += matrix [i][j];
+        }
+        return compute;
     }
 }
