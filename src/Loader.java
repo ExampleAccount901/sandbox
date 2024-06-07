@@ -1,34 +1,25 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
-import java.util.Random;
 
 public class Loader {
-    public static void main(String[] args) {
-        int[][] matrix = new int[1][8];
-        Random gen = new Random();
+    public static void main(String[] args) throws IOException {
+        String filePath = "resources/input_small.csv";
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        int[] numbers = new int[1000];
+        int i = 0;
 
-        for (int i = 0; i < matrix.length; i++) {
-            matrix[i] = new int[i + 1];
-            for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = gen.nextInt(2);
-            }
+        while (reader.ready()) {
+            String line = reader.readLine();
+            String[] words = line.split(",");
+            String firstWord = words[0];
+            int num = Integer.parseInt(firstWord);
+            numbers[i++] = num;
         }
+        Arrays.sort(numbers);
+        System.out.println(Arrays.toString(numbers));
 
-        for (int i = 0; i < matrix.length; i++) {
-            int[] row = matrix[i];
-            String line = Arrays.toString(row);
-            System.out.println(line);
-        }
-
-        System.out.println(computeSum(matrix));
-    }
-
-    // TODO: compute the sum
-    public static int computeSum(int[][] matrix) {
-        int compute = 0;
-        for (int i= 0; i < matrix.length; i++) {
-            for (int j = 0; j<matrix[i].length; j++)
-                compute += matrix [i][j];
-        }
-        return compute;
+        reader.close();
     }
 }
