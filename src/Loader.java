@@ -1,35 +1,20 @@
-import java.io.*;
-import java.util.*;
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class Loader {
     public static void main(String[] args) throws IOException {
-        String input = "resources/input_small.csv";
-        String output = "resources/output_sorted.csv";
-        reverseFile(input, output);
-
+        List<String> lines = Files.readAllLines(Paths.get("resources/input_small.csv"));
+        for (String line : lines) {
+            String[] words = line.split(",");
+            String[] words2 = new String[4];
+            System.arraycopy(words, 1, words2, 0, 4);
+            String result = String.join(" ", words2);
+            System.out.println(result);
+        }
     }
-
-
-    public static void reverseFile(String inputFile, String outputFile) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("resources/input_small.csv"));
-            for (int i = 0; i <1000; i++) {
-            String list = reader.readLine();
-                String[] myarray = list.split(",");
-                Collections.reverse(Arrays.asList(myarray));
-                String done=Arrays.toString(myarray);
-                System.out.printf(done);
-
-
-
-            }
-
-
-
-
-
-
-        }}
+}
 
 
 
