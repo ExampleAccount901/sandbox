@@ -1,32 +1,31 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
+import java.util.logging.Logger;
 
 public class Loader {
-    public static void main(String[] args) throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("resources/input_small.csv"));
-        String[] temp = new String[4000];
-        String[] result = new String[4000];
-        int offset = 0;
-        for (String line : lines) {
-            String[] words = line.split(",");
-            System.arraycopy(words, 1, temp, offset, 4);
-            offset += 4;
-        }
-        int counter = 0;
-        for (int i = 0; i < temp.length; i++) {
-            if (temp[i].length() <= 5) {
-                result[counter] = temp[i];
-                counter++;
-            }
-        }
-        System.out.println(counter);
-        System.out.println(Arrays.toString(result));
 
-        String[] result2 = new String[counter];
+    private static Logger logger = Logger.getLogger(Loader.class.getName());
 
+    public static void main(String[] args) {
+        DummyClass obj = new DummyClass();
+        obj.setField1("value1");
+        obj.setField2(1000);
+        method1(obj);
+    }
+
+    public static void method1(DummyClass arg) {
+        logger.info("method1 has been called.");
+        System.out.println(arg);
+        method2(arg);
+    }
+
+    public static void method2(DummyClass arg) {
+        logger.info("method2 has been called.");
+        System.out.println(arg);
+        method3(arg);
+    }
+
+    public static void method3(DummyClass arg) {
+        logger.info("method3 has been called.");
+        System.out.println(arg);
     }
 }
 
