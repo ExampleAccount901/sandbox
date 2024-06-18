@@ -16,7 +16,7 @@ public class Loader {
      * @return
      */
     public static boolean isValidPhoneNumber(String number) {
-        return number.matches("[+()\\s\\-]+\\d{11}");
+        return number.matches("^\\+?\\d{1}\\s?\\(?\\d{3}\\)?\\s?\\(?\\d{3}\\)?[\\s-]?[\\s-]?[\\s-]?\\d{2}[\\s-]?[\\s-]?[\\s-]?\\d{2}");
     }
 
     @Test
