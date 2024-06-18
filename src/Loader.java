@@ -1,31 +1,33 @@
-import java.util.logging.Logger;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Loader {
 
-    private static Logger logger = Logger.getLogger(Loader.class.getName());
-
     public static void main(String[] args) {
-        DummyClass obj = new DummyClass();
-        obj.setField1("value1");
-        obj.setField2(1000);
-        method1(obj);
+        String str = "+7(929)6721561";
+
+        System.out.println(str.matches("\\+?\\d+"));
     }
 
-    public static void method1(DummyClass arg) {
-        logger.info("method1 has been called.");
-        System.out.println(arg);
-        method2(arg);
+    /**
+     * Returns true if number is valid
+     *
+     * @param number - phone number
+     * @return
+     */
+    public static boolean isValidPhoneNumber(String number) {
+        return false;
     }
 
-    public static void method2(DummyClass arg) {
-        logger.info("method2 has been called.");
-        System.out.println(arg);
-        method3(arg);
-    }
-
-    public static void method3(DummyClass arg) {
-        logger.info("method3 has been called.");
-        System.out.println(arg);
+    @Test
+    void test() {
+        assertEquals(true, isValidPhoneNumber("+7(929)6721561"));
+        assertEquals(false, isValidPhoneNumber("?79296721561"));
+        assertEquals(false, isValidPhoneNumber("+792967215612"));
+        assertEquals(true, isValidPhoneNumber("+7(929) 672-15-61"));
+        assertEquals(true, isValidPhoneNumber("+7(929) (672) - 15 - 61"));
+        assertEquals(true, isValidPhoneNumber("89296721561"));
     }
 }
 
