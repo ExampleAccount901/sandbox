@@ -5,9 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Loader {
 
     public static void main(String[] args) {
-        String str = "+7(929)6721561";
 
-        System.out.println(str.matches("\\+?\\d+"));
+
     }
 
     /**
@@ -17,7 +16,7 @@ public class Loader {
      * @return
      */
     public static boolean isValidPhoneNumber(String number) {
-        return false;
+        return number.matches("[+()\\s\\-]+\\d{11}");
     }
 
     @Test
