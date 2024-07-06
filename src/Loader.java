@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Loader {
 
     public static void main(String[] args) {
-        ArrayList<Person> people = new ArrayList<>(){{
+        ArrayList<Person> people = new ArrayList<>() {{
             add(new Developer("Andrew", "111", "java"));
             add(new Developer("Bob", "222", "c++"));
             add(new Developer("John", "333", "python"));
@@ -13,12 +13,35 @@ public class Loader {
         }};
 
         for (Person person : people) {
-            if (person instanceof Person) {
+            if (person instanceof BackendDeveloper) {
+
+                person.greet();
+                ((BackendDeveloper) person).doWork();
+                ((BackendDeveloper) person).writeCode();
+                ((BackendDeveloper) person).printStack();
+            }
+            else if (person instanceof Developer) {
+
+                person.greet();
+                ((Developer) person).doWork();
+                ((Developer) person).writeCode();
+            }
+            else if (person instanceof Employee) {
+
+                person.greet();
+                ((Employee) person).doWork();
+            }
+            else if (person instanceof Person) {
+
                 person.greet();
             }
+
+
         }
     }
 }
+
+
 
 
 

@@ -7,7 +7,7 @@ public class Developer extends Employee {
     }
 
     public void writeCode() {
-        System.out.println("Developer is writing in " + language + " language");
+        System.out.println(name+ " is writing in " + language + " language");
     }
 
     @Override
