@@ -1,32 +1,22 @@
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.ArrayList;
 
 public class Loader {
 
     public static void main(String[] args) {
+        ArrayList<Person> people = new ArrayList<>(){{
+            add(new Developer("Andrew", "111", "java"));
+            add(new Developer("Bob", "222", "c++"));
+            add(new Developer("John", "333", "python"));
+            add(new Employee("Clark", "444"));
+            add(new BackendDeveloper("John", "555", "PHP", "PHP/Symphony/JS"));
+            add(new Person("Albert"));
+        }};
 
-
-    }
-
-    /**
-     * Returns true if number is valid
-     *
-     * @param number - phone number
-     * @return
-     */
-    public static boolean isValidPhoneNumber(String number) {
-        return number.matches("^\\+?\\d{1}\\s?\\(?\\d{3}\\)?\\s?\\(?\\d{3}\\)?[\\s-]?[\\s-]?[\\s-]?\\d{2}[\\s-]?[\\s-]?[\\s-]?\\d{2}");
-    }
-
-    @Test
-    void test() {
-        assertEquals(true, isValidPhoneNumber("+7(929)6721561"));
-        assertEquals(false, isValidPhoneNumber("?79296721561"));
-        assertEquals(false, isValidPhoneNumber("+792967215612"));
-        assertEquals(true, isValidPhoneNumber("+7(929) 672-15-61"));
-        assertEquals(true, isValidPhoneNumber("+7(929) (672) - 15 - 61"));
-        assertEquals(true, isValidPhoneNumber("89296721561"));
+        for (Person person : people) {
+            if (person instanceof Person) {
+                person.greet();
+            }
+        }
     }
 }
 
